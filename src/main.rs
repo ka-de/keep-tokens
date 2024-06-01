@@ -64,7 +64,7 @@ fn main() {
         let new_content = format!(
             "{} ||| {}, {}",
             keep_tokens.join(", "), // Joins the keep_tokens vector with commas
-            filtered_tags.join(", "), // Joins the filtered_tags vector with commas
+            filtered_tags.join(","), // Joins the filtered_tags vector with commas
             sentences
         );
 
