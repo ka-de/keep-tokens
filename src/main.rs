@@ -10,8 +10,7 @@ use walkdir::WalkDir;
  * For each .txt file found, it reads the content, splits it into tags
  * (separated by commas) and sentences (after the first comma-separated list).
  *
- * It then filters out tags that are not in the "keep tokens" list, unless they
- * appear in the sentences. Finally, it writes a new version of the file with the
+ * Finally, it writes a new version of the file with the
  * format: keep_tokens ||| filtered_tags, sentences.
  *
  * The code uses the `walkdir` crate to recursively traverse the directory and find
@@ -58,7 +57,7 @@ fn main() {
 
         let filtered_tags: Vec<_> = tags
             .into_iter()
-            .filter(|tag| (!keep_tokens.contains(tag) || sentences.contains(tag))) // Filters out tags not in keep_tokens, unless they appear in sentences
+            .filter(|tag| !keep_tokens.contains(tag)) // Filters out tags not in keep_tokens
             .collect();
 
         let new_content = format!(
